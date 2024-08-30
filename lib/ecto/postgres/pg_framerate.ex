@@ -146,7 +146,7 @@ defpgmodule Vtc.Ecto.Postgres.PgFramerate do
   def cast(json) when is_map(json) do
     schema = %{
       playback: PgRational,
-      ntsc: {:parameterized, Ecto.Enum, Ecto.Enum.init(values: [:drop, :non_drop])}
+      ntsc: Ecto.ParameterizedType.init(Ecto.Enum, values: [:drop, :non_drop])
     }
 
     changeset =
